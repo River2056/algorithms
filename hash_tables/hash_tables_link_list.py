@@ -14,18 +14,15 @@ class HashTable():
     def __hash(self, key):
         hash_key = 0
         for i in range(len(key)):
-            hash_key += ord(key[i]) * i % len(self.data)
+            hash_key = (hash_key + ord(key[i]) * i) % len(self.data)
         return hash_key
 
     def set(self, key, value):
         h = self.__hash(key)
-        if h > len(self.data):
-            h %= len(self.data)
         bucket = self.data[h]
         if bucket == None:
             node = LinkNode(key, value, None)
-            bucket = node
-            self.data[h] = bucket
+            self.data[h] = node
         else:
             target_node = None
             while bucket.key != key and bucket.next != None:
@@ -38,8 +35,6 @@ class HashTable():
 
     def get(self, key):
         h = self.__hash(key)
-        if h > len(self.data):
-            h %= len(self.data)
         node = self.data[h]
         while node != None and node.key != key and node.next != None:
             node = node.next()
@@ -47,8 +42,34 @@ class HashTable():
             return node.value
         return node
 
-my_hash_table = HashTable(10)
-my_hash_table.set('grapes', 100)
+    def keys(self):
+        all_keys = []
+        for index, element in enumerate(self.data):
+            if element != None:
+                node = element
+                all_keys.append(node.key)
+                while node.next != None:
+                    node = node.next
+                    if node != None:
+                        all_keys.append(node.key)
+        return all_keys
+
+    def values(self):
+        all_values = []
+        for index, element in enumerate(self.data):
+            if element != None:
+                node = element
+                all_values.append(node.value)
+                while node.next != None:
+                    node = node.next
+                    if node != None:
+                        all_values.append(node.value)
+        return all_values
+
+my_hash_table = HashTable(50)
+my_hash_table.set('grapes', 10000)
 my_hash_table.set('master', 'hello')
 print(my_hash_table.get('grapes'))
 print(my_hash_table.get('master'))
+print(my_hash_table.keys())
+print(my_hash_table.values())
