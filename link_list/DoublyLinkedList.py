@@ -23,8 +23,7 @@ class DoublyLinkedList():
             self.head = node
             self.tail = node
         else:
-            original_tail = self.tail
-            node.prev = original_tail
+            node.prev = self.tail
             self.tail.next = node
             self.tail = node
         self.size += 1
@@ -60,6 +59,7 @@ class DoublyLinkedList():
         current_node.prev = node
         node.prev = previous_node
         node.next = current_node
+        self.size += 1
         return node
 
     def remove(self, index):
@@ -80,6 +80,7 @@ class DoublyLinkedList():
         # reset pointers
         to_delete.next = None
         to_delete.prev = None
+        self.size -= 1
         return to_delete
 
     def transverse_to_index(self, index):
@@ -119,10 +120,12 @@ def main():
     inserted_node = my_doubly_linked_list.insert(2, 777)
     print('inserted node: ', inserted_node.__repr__())
     my_doubly_linked_list.print()
+    print(my_doubly_linked_list.size)
 
     removed_node = my_doubly_linked_list.remove(2)
     print('removed node: ', removed_node.__repr__())
     my_doubly_linked_list.print()
+    print(my_doubly_linked_list.size)
 
 if __name__ == '__main__':
     main()
