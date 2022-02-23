@@ -98,6 +98,7 @@ class LinkedList():
         return current_node
 
     def reverse(self):
+        """reverse current list"""
         if self.size <= 0:
             # nothing to reverse
             return
