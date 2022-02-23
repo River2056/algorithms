@@ -54,6 +54,12 @@ class LinkedList():
         else:
             previous_node = self.head
             current_node = self.head
+            '''
+                   prev-->current
+                        ||
+                        \/
+                prev-->node-->current
+            '''
             while init_index != index:
                 previous_node = current_node
                 current_node = current_node.next
@@ -73,6 +79,12 @@ class LinkedList():
             original_head = self.head
             self.head = self.head.next
             return original_head
+        '''
+            prev-->to_delete-->current
+                      ||
+                      \/
+                 prev-->current
+        '''
         init_index = 0
         previous_node = self.head
         current_node = self.head
@@ -84,6 +96,28 @@ class LinkedList():
         self.size -= 1
         current_node.next = None
         return current_node
+
+    def reverse(self):
+        if self.size <= 0:
+            # nothing to reverse
+            return
+        '''
+          head     tail
+            A-->B-->C-->null
+                   ||
+                   \/
+                  tail    head
+            null<--A<--B<--C
+        '''
+        previous_node = None
+        current_node = self.head
+        self.tail = self.head
+        while current_node != None:
+            next_node = current_node.next
+            current_node.next = previous_node
+            previous_node = current_node
+            self.head = current_node
+            current_node = next_node
 
     def print(self):
         """iteratively prints all values in list"""
@@ -125,6 +159,9 @@ def main():
     print(f'removed node: {removed_node.__repr__()}')
     my_link_list.print()
     print(my_link_list.size)
+
+    my_link_list.reverse()
+    my_link_list.print()
 
 if __name__ == '__main__':
     main()
