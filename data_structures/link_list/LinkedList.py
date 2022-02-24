@@ -93,7 +93,12 @@ class LinkedList():
             current_node = current_node.next
             init_index += 1
         previous_node.next = current_node.next
+        if index == 0:
+            self.head = previous_node
+        elif index == self.size - 1:
+            self.tail = previous_node
         self.size -= 1
+        # reset pointer before return
         current_node.next = None
         return current_node
 
