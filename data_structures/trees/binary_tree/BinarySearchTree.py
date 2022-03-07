@@ -87,23 +87,28 @@ class BinarySearchTree():
     def remove(self, target):
         stack = Stack()
         stack.push(self.root)
-
+        
+        previous = self.root
+        direction = ''
         while not stack.is_empty():
             current = stack.pop()
             if current != None:
-                pop_item = current
+                # pop_item = current
                 if current.value == target:
                     # node to remove, move children up one level
-                    if current.value > target:
-                        current = current.left
-                    elif current.value < target:
-                        current = current.right
-                    return pop_item
+                    if direction == 0:
+                        previous.left = current.right if current.right != None else current.left
+                    elif direction == 1:
+                        previous.right = current.right if current.right != None else current.left
+                    # return pop_item
                 else:
                     if current.value > target:
                         stack.push(current.left)
+                        direction = 0
                     elif current.value < target:
                         stack.push(current.right)
+                        direction = 1
+                    previous = current
         print('done removing')
 
     def print(self):
@@ -122,16 +127,19 @@ class BinarySearchTree():
 
 def main():
     bst = BinarySearchTree()
-    bst.insert(10)
+    bst.insert(9)
+    bst.insert(4)
+    bst.insert(6)
     bst.insert(20)
-    bst.insert(5)
-    bst.insert(2)
+    bst.insert(170)
+    bst.insert(15)
+    bst.insert(1)
     bst.print()
 
     node = bst.lookup(2)
     print('lookup node: ', node)
 
-    pop_item = bst.remove(10)
+    pop_item = bst.remove(5)
     print('pop item: ', pop_item)
     bst.print()
 
