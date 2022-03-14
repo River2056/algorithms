@@ -1,5 +1,3 @@
-import json
-
 class Node():
     def __init__(self, value, left = None, right = None):
         self.value = value
@@ -18,30 +16,30 @@ class BinarySearchTree():
 
     def insert(self, value):
         node = Node(value)
-        if self.root == None:
+        if not self.root:
             self.root = node
             return node
         else:
             current = self.root
             while True:
                 if current.value > value:
-                    if current.left == None:
+                    if current.left:
                         current.left = node
                         return node
                     current = current.left
                 else:
-                    if current.right == None:
+                    if current.right:
                         current.right = node
                         return node
                     current = current.right
 
     def lookup(self, value):
-        if self.root == None:
+        if not self.root:
             return None
         level = 1
         current = self.root
         while True:
-            if current != None:
+            if not current:
                 if current.value == value:
                     print('level: ', level)
                     return current
@@ -56,36 +54,35 @@ class BinarySearchTree():
                 # went to the end
                 return None
 
-    def successor(self, root):
-        root = root.right
-        while root.left:
-            root = root.left
-        return root.value
+    def remove(self, value):
+        return self.__remove(self, self.root, value)
 
-    def predecessor(self, root):
-        root = root.left
-        while root.right:
-            root = root.right
-        return root.value
-
-    def remove(self, root, key):
+    def __remove(self, root, value):
         if not root:
             return None
-
-        if key > root.value:
-            root.right = self.remove(root.right, key)
-        elif key < root.value:
-            root.left = self.remove(root.left, key)
         else:
-            if not (root.left or root.right):
-                root = None
-            elif root.right:
-                root.value = self.successor(root)
-                root.right = self.remove(root.right, root.value)
-            else:
-                root.value =  self.predecessor(root)
-                root.left = self.remove(root.left, root.value)
-        return root
+            if value > root.value:
+                root = self.__remove(self, root.right, value)
+            elif value < root.value:
+                root = self.__remove(self, root.left, value)
+            elif value == root.value:
+                # found node
+                if not root.left and not root.right:
+                    # no child nodes, leaf node
+                    root = None
+        pass
+
+    def find_min(self, right_node):
+        current = right_node
+        while current.left:
+            current = current.left
+        return current
+
+    def find_max(self, left_node):
+        current = left_node
+        while current.right:
+            current = current.right
+        return current
 
 def traverse(node):
     tree = { 'value': node.value, 'left': None, 'right': None }
@@ -103,23 +100,6 @@ def main():
     bst.insert(15)
     bst.insert(1)
     bst.insert(7)
-
-    print('before remove: ')
-    print(json.dumps(traverse(bst.root), indent=4))
-
-    # lookup_node = bst.lookup(100)
-    # print('lookup node: ', lookup_node)
-
-    # lookup_node = bst.lookup(1)
-    # print('lookup node: ', lookup_node)
-    bst.remove(bst.root ,9)
-    print('after remove: ')
-    print(json.dumps(traverse(bst.root), indent=4))
-
-
-    bst.remove(bst.root, 20)
-    print('after remove: ')
-    print(json.dumps(traverse(bst.root), indent=4))
 
 if __name__ == '__main__':
     main()
