@@ -3,7 +3,6 @@ def fib_recursive(n):
         return n
     return fib_recursive(n - 1) + fib_recursive(n - 2)
 
-
 def fib_iterative(n):
     if n < 2:
         return n
@@ -16,8 +15,6 @@ def fib_iterative(n):
             pre2_val = pre1_val
             pre1_val = curr
         return curr
-
-
 
 def main():
     print('recursive')
