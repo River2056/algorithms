@@ -25,7 +25,7 @@ def main():
     print(find_factorial_recursive(15))
     print(find_factorial_recursive(20))
     print(find_factorial_recursive(100))
-    print(find_factorial_recursive(1000))
+    # print(find_factorial_recursive(1000))
     print()
 
     print('iterative function')
@@ -35,7 +35,7 @@ def main():
     print(find_factorial_iterative(15))
     print(find_factorial_iterative(20))
     print(find_factorial_iterative(100))
-    print(find_factorial_iterative(1000))
+    # print(find_factorial_iterative(1000))
     print()
 
 
