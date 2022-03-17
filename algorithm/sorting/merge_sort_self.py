@@ -1,6 +1,3 @@
-import time
-import random
-
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -31,24 +28,13 @@ def merge_sort(arr):
     return new_arr
 
 def main():
-    r_start = 1
-    r_end = 500
-    arr = [random.randint(r_start, r_end) for i in range(r_end)]
+    # import custom print function
+    import os, sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(os.path.abspath(__file__)).parent.parent.parent))
+    from common import print_sort_result_benchmark
 
-    start_time = time.time()
-    sorted_arr = merge_sort(arr)
-    end_time = time.time()
-
-    print('before')
-    print(arr)
-    print()
-
-    print('after')
-    print(sorted_arr)
-    print()
-
-    print('time elapsed: ')
-    print(f'--- {end_time - start_time} seconds ---')
+    print_sort_result_benchmark(1, 100, merge_sort)
 
 if __name__ == '__main__':
     main()
