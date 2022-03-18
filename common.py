@@ -1,8 +1,8 @@
 import time
 import random
 
-def print_sort_result_benchmark(arr_start, arr_end, fn):
-    arr = [random.randint(arr_start, arr_end) for i in range(arr_end)]
+def print_sort_result_benchmark(number_of_elements, arr_start, arr_end, fn):
+    arr = [random.randint(arr_start, arr_end) for i in range(number_of_elements)]
 
     start_time = time.time()
     sorted_arr = fn(arr)

@@ -1,11 +1,8 @@
-def bubble_sort(array):
-    arr = [e for e in array]
+def insertion_sort(array):
+    arr = [val for val in array]
     for i in range(len(arr)):
-        for j in range(i, len(arr)):
-            if arr[i] >= arr[j]:
-                t = arr[i]
-                arr[i] = arr[j]
-                arr[j] = t
+        if arr[i] < arr[0]:
+
     return arr
 
 def main():
@@ -15,8 +12,7 @@ def main():
     sys.path.insert(0, str(Path(os.path.abspath(__file__)).parent.parent.parent))
     from common import print_sort_result_benchmark
 
-    # print results
-    print_sort_result_benchmark(10, 1, 100, bubble_sort)
+    print_sort_result_benchmark(10, 1, 100, insertion_sort)
 
 if __name__ == '__main__':
     main()

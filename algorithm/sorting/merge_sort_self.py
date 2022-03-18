@@ -34,7 +34,7 @@ def main():
     sys.path.insert(0, str(Path(os.path.abspath(__file__)).parent.parent.parent))
     from common import print_sort_result_benchmark
 
-    print_sort_result_benchmark(1, 100, merge_sort)
+    print_sort_result_benchmark(10, 1, 100, merge_sort)
 
 if __name__ == '__main__':
     main()
