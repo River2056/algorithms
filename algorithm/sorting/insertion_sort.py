@@ -16,7 +16,7 @@ def main():
     sys.path.insert(0, str(Path(os.path.abspath(__file__)).parent.parent.parent))
     from common import print_sort_result_benchmark
 
-    print_sort_result_benchmark(10, 1, 10, insertion_sort)
+    print_sort_result_benchmark(10, 1, 100, insertion_sort)
 
 if __name__ == '__main__':
     main()
