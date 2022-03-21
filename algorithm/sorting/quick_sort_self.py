@@ -1,7 +1,6 @@
-def quick_sort(array):
-    if len(array) <= 1:
-        return array
-    arr = [val for val in array]
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
     pivot = arr[-1]
     i, j = -1, 0
     for e in range(len(arr)):

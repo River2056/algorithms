@@ -1,5 +1,4 @@
-def insertion_sort(array):
-    arr = [val for val in array]
+def insertion_sort(arr):
     for i in range(len(arr)):
         if arr[i] < arr[0]:
             arr.insert(0, arr.pop(i))

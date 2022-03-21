@@ -1,5 +1,4 @@
-def bubble_sort(array):
-    arr = [e for e in array]
+def bubble_sort(arr):
     for i in range(len(arr)):
         for j in range(i, len(arr)):
             if arr[i] >= arr[j]:
