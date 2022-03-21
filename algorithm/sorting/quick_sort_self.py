@@ -1,7 +1,8 @@
 def quick_sort(array):
-    if len(array) == 1:
+    if len(array) <= 1:
         return array
     arr = [val for val in array]
+    print('arr: ', arr)
     pivot = arr[-1]
     i, j = -1, 0
     for e in range(len(arr)):
@@ -10,13 +11,18 @@ def quick_sort(array):
             tmp = arr[i]
             arr[i] = pivot
             arr[e] = tmp
-            
         if arr[e] < pivot:
             i += 1
             tmp = arr[i]
             arr[i] = arr[j]
             arr[j] = tmp
         j += 1
+    print('i, j: ', i, j)
+    left = quick_sort(arr[0:i])
+    print('left: ', left)
+    right = quick_sort(arr[i:])
+    print('right: ', right)
+    return left + right
 
 def main():
     # import custom print function
