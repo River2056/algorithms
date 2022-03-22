@@ -24,6 +24,9 @@ def breadth_first_search(root):
             queue.enqueue(node.value.right)
     return result
 
+def breadth_first_search_recursive(node):
+    pass
+
 def main():
     tree = BinarySearchTree()
     tree.insert(9)
