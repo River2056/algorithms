@@ -24,8 +24,16 @@ def breadth_first_search(root):
             queue.enqueue(node.value.right)
     return result
 
-def breadth_first_search_recursive(node):
-    pass
+def breadth_first_search_recursive(queue, result = []):
+    if not queue.is_empty():
+        node = queue.dequeue()
+        result.append(node.value.value)
+        if node.value.left:
+            queue.enqueue(node.value.left)
+        if node.value.right:
+            queue.enqueue(node.value.right)
+        return breadth_first_search_recursive(queue)
+    return result
 
 def main():
     tree = BinarySearchTree()
@@ -38,7 +46,13 @@ def main():
     tree.insert(1)
 
     result = breadth_first_search(tree.root)
-    print('result')
+    print('iterative')
+    print(result)
+
+    queue = Queue()
+    queue.enqueue(tree.root)
+    result = breadth_first_search_recursive(queue)
+    print('recursive')
     print(result)
 
 if __name__ == '__main__':
