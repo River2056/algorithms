@@ -4,6 +4,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(os.path.abspath(__file__)).parent.parent.parent))
 from data_structures.trees.binary_tree.BinarySearchTree_v2 import BinarySearchTree
 
+# preorder
 def depth_first_search(root):
     stack = []
     result = []
@@ -18,6 +19,15 @@ def depth_first_search(root):
             stack.append(node.left)
     return result
 
+# preorder
+def depth_recursive(root, ls = []):
+    if not root: 
+        return
+    ls.append(root.value)
+    depth_recursive(root.left, ls)
+    depth_recursive(root.right, ls)
+    return ls
+
 def main():
     tree = BinarySearchTree()
     tree.insert(9)
@@ -30,6 +40,10 @@ def main():
 
     result = depth_first_search(tree.root)
     print('result')
+    print(result)
+
+    result = depth_recursive(tree.root)
+    print('result recursive')
     print(result)
 
 if __name__ == '__main__':
