@@ -1,6 +1,11 @@
 import time
 import random
 
+def print_result(test_input, expected, fn):
+    result = fn(test_input)
+    print('result: ', result)
+    assert result == expected, f'should be {expected}, got {result} instead'
+
 def print_sort_result_benchmark(number_of_elements, start, end, fn):
     # arr = [random.randint(arr_start, arr_end) for i in range(number_of_elements)]
     arr = generate_random_int_array(number_of_elements, start, end)
