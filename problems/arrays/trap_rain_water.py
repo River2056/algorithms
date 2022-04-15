@@ -50,13 +50,13 @@ def trap_rain_water(height):
     max_left, max_right = 0, 0
     while left < right:
         if height[left] <= height[right]:
-            if height[left] > max_left:
+            if height[left] >= max_left:
                 max_left = height[left]
             else:
                 total_amount += max_left - height[left]
             left += 1
         else:
-            if height[right] > max_right:
+            if height[right] >= max_right:
                 max_right = height[right]
             else:
                 total_amount += max_right - height[right]
