@@ -1,7 +1,4 @@
-import os, sys
-from pathlib import Path
-sys.path.insert(0, str(Path(os.path.abspath(__file__)).parent.parent.parent))
-from common import print_result
+import unittest
 
 def trap_rain_water_brute_force(height):
     # count every units of water for each element
@@ -63,9 +60,18 @@ def trap_rain_water(height):
             right -= 1
     return total_amount
 
-def main():
-    print_result([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], 6, trap_rain_water)
-    print_result([4, 2, 0, 3, 2, 5], 9, trap_rain_water)
+class TestTrapRainWater(unittest.TestCase):
+    def test_trap_rain_water_brute_force(self):
+        self.assertEqual(trap_rain_water_brute_force([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]), 6)
+        self.assertEqual(trap_rain_water_brute_force([4, 2, 0, 3, 2, 5]), 9)
+
+    def test_trap_rain_water_self(self):
+        self.assertEqual(trap_rain_water_self([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]), 6)
+        self.assertEqual(trap_rain_water_self([4, 2, 0, 3, 2, 5]), 9)
+
+    def test_trap_rain_water(self):
+        self.assertEqual(trap_rain_water([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]), 6)
+        self.assertEqual(trap_rain_water([4, 2, 0, 3, 2, 5]), 9)
 
 if __name__ == '__main__':
-    main()
+    unittest.main()
