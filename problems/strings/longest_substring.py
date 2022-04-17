@@ -1,7 +1,4 @@
-import os, sys
-from pathlib import Path
-sys.path.insert(0, str(Path(os.path.abspath(__file__)).parent.parent.parent))
-from common import print_result
+import unittest
 
 def longest_substring(s):
     l = 0
@@ -16,11 +13,24 @@ def longest_substring(s):
         max_count = max(max_count, len(check_list))
     return max_count
 
-def main():
-    print_result('abcabcbb', 3, longest_substring)
-    print_result('bbbbb', 1, longest_substring)
-    print_result('pwwkew', 3, longest_substring)
-    print_result(' ', 1, longest_substring)
+class TestLongestSubstring(unittest.TestCase):
+    def test_longest_substring(self):
+        print('test longest substring without repeating characters')
+        result = longest_substring('abcabcbb')
+        print('result:', result)
+        self.assertEqual(result, 3)
+
+        result = longest_substring('bbbbb')
+        print('result:', result)
+        self.assertEqual(result, 1)
+
+        result = longest_substring('pwwkew')
+        print('result:', result)
+        self.assertEqual(result, 3)
+
+        result = longest_substring(' ')
+        print('result:', result)
+        self.assertEqual(result, 1)
 
 if __name__ == '__main__':
-    main()
+    unittest.main()

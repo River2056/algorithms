@@ -61,17 +61,42 @@ def trap_rain_water(height):
     return total_amount
 
 class TestTrapRainWater(unittest.TestCase):
+    def setUp(self):
+        self.test_input = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+        self.expected = 6
+
+        self.test_input_2 = [4, 2, 0, 3, 2, 5]
+        self.expected_2 = 9
+
     def test_trap_rain_water_brute_force(self):
-        self.assertEqual(trap_rain_water_brute_force([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]), 6)
-        self.assertEqual(trap_rain_water_brute_force([4, 2, 0, 3, 2, 5]), 9)
+        print('test trap_rain_water_brute_force')
+        result = trap_rain_water_brute_force(self.test_input)
+        print('result: ', result)
+        self.assertEqual(result, self.expected)
+
+        result = trap_rain_water_brute_force(self.test_input_2)
+        print('result: ', result)
+        self.assertEqual(result, self.expected_2)
 
     def test_trap_rain_water_self(self):
-        self.assertEqual(trap_rain_water_self([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]), 6)
-        self.assertEqual(trap_rain_water_self([4, 2, 0, 3, 2, 5]), 9)
+        print('test trap_rain_water_self')
+        result = trap_rain_water_self(self.test_input)
+        print('result: ', result)
+        self.assertEqual(result, self.expected)
+
+        result = trap_rain_water_self(self.test_input_2)
+        print('result: ', result)
+        self.assertEqual(result, self.expected_2)
 
     def test_trap_rain_water(self):
-        self.assertEqual(trap_rain_water([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]), 6)
-        self.assertEqual(trap_rain_water([4, 2, 0, 3, 2, 5]), 9)
+        print('test trap_rain_water')
+        result = trap_rain_water(self.test_input)
+        print('result: ', result)
+        self.assertEqual(result, self.expected)
+
+        result = trap_rain_water(self.test_input_2)
+        print('result: ', result)
+        self.assertEqual(result, self.expected_2)
 
 if __name__ == '__main__':
     unittest.main()
