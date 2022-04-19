@@ -20,7 +20,7 @@ def print_diamond(width, min_width=1, spaces=0, container=[]):
             stars.append(' ')
         container.append(stars)
     else:
-        container.append(['*' for i in range(width)])
+        container.append(('*' for i in range(width)))
     return print_diamond(width-2, min_width, spaces+2, container)
 
 def main():
