@@ -23,20 +23,28 @@ def typed_out_strings_two_pointer(s, t):
     i, j = len(s)-1, len(t)-1
     arr1 = []
     arr2 = []
-    while i > 0 or j > 0:
-        if s[i] == '#':
-            i -= 2
-            continue
-        if t[j] == '#':
-            j -= 2
-            continue
-        arr1.append(s[i])
-        arr2.append(t[j])
+    count1 = 0
+    count2 = 0
+    while i >= 0 or j >= 0:
+        if i >= 0 and s[i] == '#':
+            count1 += 1
+        else:
+            if count1 == 0 and i >= 0:
+                arr1.append(s[i])
+            else:
+                count1 -= 1
         i -= 1
+
+        if j >= 0 and t[j] == '#':
+            count2 += 1
+        else:
+            if count2 == 0 and j >= 0:
+                arr2.append(t[j])
+            else:
+                count2 -= 1
         j -= 1
 
     return arr1 == arr2
-
 
 class TestTypedOutStrings(unittest.TestCase):
     def setUp(self):
@@ -44,7 +52,8 @@ class TestTypedOutStrings(unittest.TestCase):
             (('ab#c', 'ad#c'), True),
             (('ab##', 'c#d#'), True),
             (('a#c', 'b'), False),
-            (('#a#c', 'a##c'), True)
+            (('#a#c', 'a##c'), True),
+            (('xywrrmp', 'xywrrmu#p'), True)
         ]
 
     # def test_typed_out_strings_build_string(self):
