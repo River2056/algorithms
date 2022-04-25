@@ -7,7 +7,6 @@ def coin_change(coins, amount):
         for c in coins:
             if i - c >= 0:
                 dp[i] = min(dp[i], 1 + dp[i - c])
-    print(dp)
     return dp[amount] if dp[amount] != amount + 1 else -1
 
 def coin_change_self(coins, amount, dp=[]):
