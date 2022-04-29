@@ -54,34 +54,32 @@ def typed_out_strings_two_pointer_2(s, t):
         if not => minus 1 count
     """
     i, j = len(s) - 1, len(t) - 1
-    count_s, count_t = 0, 0
     while i >= 0 or j >= 0:
-        if (
-            (s[i] != '#' and t[j] != '#') 
-            and
-            (count_s == 0 and count_t == 0)
-            and 
-            s[i] != t[j]
-        ):
-            return False
+        if (i >= 0 and s[i] == '#') or (j >= 0 and t[j] == '#'):
+            if s[i] == '#':
+                backcount_s = 2
+                while backcount_s > 0 and i > -1:
+                    backcount_s -= 1
+                    i -= 1
+                    if s[i] == '#':
+                        backcount_s += 2
+            if t[j] == '#':
+                backcount_t = 2
+                while backcount_t > 0 and j > -1:
+                    backcount_t -= 1
+                    j -= 1
+                    if t[j] == '#':
+                        backcount_t += 2
+            if i < 0 and j < 0:
+                return True
 
-        if s[i] == '#':
-            count_s += 1
+        else:
+            if (i < 0 and j >= 0) or (j < 0 and i >= 0):
+                return False
+            if s[i] != t[j]:
+                return False
             i -= 1
-        else:
-            if count_s > 0:
-                count_s -= 1
-                i -= 1
-
-        if t[j] == '#':
-            count_t += 1
             j -= 1
-        else:
-            if count_t > 0:
-                count_t -= 1
-                j -= 1
-        i -= 1
-        j -= 1
     return True
 
 class TestTypedOutStrings(unittest.TestCase):
@@ -92,7 +90,12 @@ class TestTypedOutStrings(unittest.TestCase):
             (('a#c', 'b'), False),
             (('#a#c', 'a##c'), True),
             (('xywrrmp', 'xywrrmu#p'), True),
-            (('bxj##tw', 'bxo#j##tw'), True)
+            (('bxj##tw', 'bxo#j##tw'), True),
+            (('e##e#o##oyof##q','e##e#fq##o##oyof##q'), True),
+            (('bxj##tw', 'bxj###tw'), False),
+            (('hd#dp#czsp#####', 'hd#dp#czsp######'), False),
+            (('y#fo##f', 'y#f#o##f'), True),
+            (('aaa###a', 'aaaa###a'), False)
         ]
 
     # def test_typed_out_strings_build_string(self):
