@@ -46,6 +46,44 @@ def typed_out_strings_two_pointer(s, t):
 
     return arr1 == arr2
 
+def typed_out_strings_two_pointer_2(s, t):
+    """
+        2 pointer counting backwards
+        if letter is # => plus 1 count and skip
+        to the next iteration
+        if not => minus 1 count
+    """
+    i, j = len(s) - 1, len(t) - 1
+    count_s, count_t = 0, 0
+    while i >= 0 or j >= 0:
+        if (
+            (s[i] != '#' and t[j] != '#') 
+            and
+            (count_s == 0 and count_t == 0)
+            and 
+            s[i] != t[j]
+        ):
+            return False
+
+        if s[i] == '#':
+            count_s += 1
+            i -= 1
+        else:
+            if count_s > 0:
+                count_s -= 1
+                i -= 1
+
+        if t[j] == '#':
+            count_t += 1
+            j -= 1
+        else:
+            if count_t > 0:
+                count_t -= 1
+                j -= 1
+        i -= 1
+        j -= 1
+    return True
+
 class TestTypedOutStrings(unittest.TestCase):
     def setUp(self):
         self.tests = [
@@ -53,7 +91,8 @@ class TestTypedOutStrings(unittest.TestCase):
             (('ab##', 'c#d#'), True),
             (('a#c', 'b'), False),
             (('#a#c', 'a##c'), True),
-            (('xywrrmp', 'xywrrmu#p'), True)
+            (('xywrrmp', 'xywrrmu#p'), True),
+            (('bxj##tw', 'bxo#j##tw'), True)
         ]
 
     # def test_typed_out_strings_build_string(self):
@@ -63,10 +102,17 @@ class TestTypedOutStrings(unittest.TestCase):
     #             print(f'build string result: {result}, expected: {expected}, input: {value}')
     #             self.assertEqual(result, expected)
 
-    def test_typed_out_strings_two_pointer(self):
+    # def test_typed_out_strings_two_pointer(self):
+    #     for value, expected in self.tests:
+    #         with self.subTest(value=value):
+    #             result = typed_out_strings_two_pointer(value[0], value[1])
+    #             print(f'two pointer result: {result}, expected: {expected}, input: {value}')
+    #             self.assertEqual(result, expected)
+
+    def test_typed_out_strings_two_pointer_2(self):
         for value, expected in self.tests:
             with self.subTest(value=value):
-                result = typed_out_strings_two_pointer(value[0], value[1])
+                result = typed_out_strings_two_pointer_2(value[0], value[1])
                 print(f'two pointer result: {result}, expected: {expected}, input: {value}')
                 self.assertEqual(result, expected)
 
