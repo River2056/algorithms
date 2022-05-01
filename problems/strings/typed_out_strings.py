@@ -116,7 +116,7 @@ class TestTypedOutStrings(unittest.TestCase):
         for value, expected in self.tests:
             with self.subTest(value=value):
                 result = typed_out_strings_two_pointer_2(value[0], value[1])
-                print(f'two pointer result: {result}, expected: {expected}, input: {value}')
+                print(f'two pointer 2 result: {result}, expected: {expected}, input: {value}')
                 self.assertEqual(result, expected)
 
 if __name__ == '__main__':
