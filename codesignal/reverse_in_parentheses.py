@@ -1,7 +1,27 @@
 import unittest
 
 def reverse_in_parentheses(inputString):
-    pass
+    pairs = []
+    stack = []
+    result = inputString
+    while result.count('(') > 0:
+        for idx, letter in enumerate(result):
+            if letter == '(':
+                stack.append(idx)
+            elif letter == ')':
+                start_index = stack.pop()
+                pairs.append((start_index, idx))
+                break
+
+        for pair in pairs:
+            s = list(result[pair[0]+1:pair[1]])
+            s.reverse()
+            s = ''.join(s)
+            convert = f'{result[0:pair[0]]}{s}{result[pair[1]+1:]}'
+            result = convert
+        pairs.clear()
+        stack.clear()
+    return result
 
 class TestReverseInParentheses(unittest.TestCase):
     def setUp(self):
