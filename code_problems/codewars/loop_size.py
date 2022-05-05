@@ -3,6 +3,7 @@ class Node:
         self.value = value
         self.next = next
 
+
 def loop_size(node):
     arr = []
     while not node in arr:
@@ -10,10 +11,11 @@ def loop_size(node):
         node = node.next
     return len(arr) - arr.index(node)
 
+
 def main():
-    nodeA = Node('A')
-    nodeB = Node('B')
-    nodeC = Node('C')
+    nodeA = Node("A")
+    nodeB = Node("B")
+    nodeC = Node("C")
     node1 = Node(1)
     node2 = Node(2)
     node3 = Node(3)
@@ -26,7 +28,7 @@ def main():
     node10 = Node(10)
     node11 = Node(11)
     node12 = Node(12)
-    
+
     nodeA.next = nodeB
     nodeB.next = nodeC
     nodeC.next = node1
@@ -44,8 +46,9 @@ def main():
     node12.next = node1
 
     l_size = loop_size(nodeA)
-    print('loop size: ', l_size)
-    assert l_size == 12, f'should be 12, got {l_size} instead'
+    print("loop size: ", l_size)
+    assert l_size == 12, f"should be 12, got {l_size} instead"
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

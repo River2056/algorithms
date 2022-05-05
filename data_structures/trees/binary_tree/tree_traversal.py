@@ -1,5 +1,5 @@
-class Node():
-    def __init__(self, value, left = None, right = None):
+class Node:
+    def __init__(self, value, left=None, right=None):
         self.value = value
         self.left = left
         self.right = right
@@ -8,9 +8,10 @@ class Node():
         return str(self.value)
 
     def __repr__(self):
-        return f'Node[value: {self.value}, left: {self.left}, right: {self.right}]'
+        return f"Node[value: {self.value}, left: {self.left}, right: {self.right}]"
 
-class Stack():
+
+class Stack:
     def __init__(self):
         self.data = []
 
@@ -32,15 +33,16 @@ class Stack():
     def print(self):
         print(self.data)
 
+
 def traverse_tree(root):
     """
-        1. pop node from stack
-        2. append to results list
-        3. push child nodes to stack (if any)
+    1. pop node from stack
+    2. append to results list
+    3. push child nodes to stack (if any)
     """
     stack = Stack()
     stack.push(root)
-    
+
     result = []
     while not stack.is_empty():
         current = stack.pop()
@@ -51,13 +53,14 @@ def traverse_tree(root):
             stack.push(current.left)
     return result
 
+
 def main():
-    a = Node('a')
-    b = Node('b')
-    c = Node('c')
-    d = Node('d')
-    e = Node('e')
-    f = Node('f')
+    a = Node("a")
+    b = Node("b")
+    c = Node("c")
+    d = Node("d")
+    e = Node("e")
+    f = Node("f")
 
     """
         structure:
@@ -75,5 +78,6 @@ def main():
 
     print(traverse_tree(a))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

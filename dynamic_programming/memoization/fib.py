@@ -1,4 +1,4 @@
-def fib(n, ref = {}):
+def fib(n, ref={}):
     if n in ref:
         return ref[n]
     if n <= 2:
@@ -6,6 +6,7 @@ def fib(n, ref = {}):
     value = fib(n - 1, ref) + fib(n - 2, ref)
     ref[n] = value
     return value
+
 
 print(fib(2))
 print(fib(5))

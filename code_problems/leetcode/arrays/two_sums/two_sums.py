@@ -11,10 +11,12 @@ def twoSum(nums, target):
             diff = target - v
             ref[diff] = i
 
+
 def main():
     indices = twoSum([2, 7, 11, 15], 9)
-    print('indices: ', indices)
-    assert indices == [0, 1], f'should be [0, 1], got {indices} instead'
+    print("indices: ", indices)
+    assert indices == [0, 1], f"should be [0, 1], got {indices} instead"
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

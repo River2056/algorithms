@@ -1,4 +1,4 @@
-class HashTable():
+class HashTable:
     def __init__(self, size):
         self.data = [None] * size
         # self.data[23] = []
@@ -40,8 +40,8 @@ class HashTable():
 
 
 hash_table = HashTable(2)
-hash_table.set('grapes', 10000)
-hash_table.set('apples', 100)
-hash_table.set('oranges', 30)
-print(hash_table.get('grapes'))
+hash_table.set("grapes", 10000)
+hash_table.set("apples", 100)
+hash_table.set("oranges", 30)
+print(hash_table.get("grapes"))
 print(hash_table.keys())

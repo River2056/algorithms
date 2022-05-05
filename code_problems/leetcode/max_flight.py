@@ -1,15 +1,16 @@
 # max_flights problem self implemented solution, probably not efficient enough...
-class Flight():
+class Flight:
     def __init__(self, start, end):
         self.start = start
         self.end = end
 
     def __repr__(self):
-        return f'Flight[start: {self.start}, end: {self.end}]'
+        return f"Flight[start: {self.start}, end: {self.end}]"
+
 
 def max_flight(flights):
     if type(flights) != list:
-        return 'Please provide list arguments!'
+        return "Please provide list arguments!"
     if len(flights) == 0:
         return 0
 
@@ -31,7 +32,8 @@ def max_flight(flights):
     print(max_flights)
     return max(max_flights)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     flights = [
         Flight(4, 8),
         Flight(2, 5),
@@ -42,4 +44,4 @@ if __name__ == '__main__':
 
     print(max_flight(flights))
 
-    print(max_flight('flights')) # invalid
+    print(max_flight("flights"))  # invalid

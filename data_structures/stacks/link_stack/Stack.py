@@ -1,4 +1,4 @@
-class Node():
+class Node:
     def __init__(self, value, next):
         self.value = value
         self.next = next
@@ -7,17 +7,17 @@ class Node():
         return str(self.value)
 
     def __repr__(self):
-        return f'[{self.value}, {self.next}]'
+        return f"[{self.value}, {self.next}]"
 
 
-class Stack():
+class Stack:
     def __init__(self):
         self.top = None
         self.bottom = None
         self.length = 0
 
     def peek(self):
-        print('peek top item: ', self.top)
+        print("peek top item: ", self.top)
         return self.top
 
     def push(self, value):
@@ -58,24 +58,25 @@ class Stack():
 
 def main():
     my_stack = Stack()
-    my_stack.push('google')
-    my_stack.push('udemy')
-    my_stack.push('discord')
-    my_stack.push('medium')
-    my_stack.push('youtube')
+    my_stack.push("google")
+    my_stack.push("udemy")
+    my_stack.push("discord")
+    my_stack.push("medium")
+    my_stack.push("youtube")
     my_stack.print()
 
     pop_item = my_stack.pop()
-    print('pop item: ', pop_item)
+    print("pop item: ", pop_item)
     my_stack.print()
 
     pop_item = my_stack.pop()
-    print('pop item: ', pop_item)
+    print("pop item: ", pop_item)
     my_stack.print()
 
     peek_item = my_stack.peek()
-    print('peek item: ', peek_item)
+    print("peek item: ", peek_item)
     my_stack.print()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

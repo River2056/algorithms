@@ -1,10 +1,12 @@
-def grid_traveller(n, m, ref = {}):
-    if f'{n}{m}' in ref:
-        return ref[f'{n}{m}']
-    if n == 1 and m == 1: return 1
-    if n == 0 or m == 0: return 0
+def grid_traveller(n, m, ref={}):
+    if f"{n}{m}" in ref:
+        return ref[f"{n}{m}"]
+    if n == 1 and m == 1:
+        return 1
+    if n == 0 or m == 0:
+        return 0
     value = grid_traveller(n - 1, m) + grid_traveller(n, m - 1)
-    ref[f'{n}{m}'] = value
+    ref[f"{n}{m}"] = value
     return value
 
 

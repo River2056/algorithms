@@ -3,6 +3,7 @@ class ListNode:
         self.val = val
         self.next = next
 
+
 def reverse_linklist(head):
     previous = None
     current = head
@@ -13,13 +14,15 @@ def reverse_linklist(head):
         current = tmp
     return previous
 
+
 def print_list(head):
     result = []
     current = head
     while current != None:
         result.append(current.val)
         current = current.next
-    print('list: ', result)
+    print("list: ", result)
+
 
 def main():
     a = ListNode(val=1)
@@ -36,5 +39,6 @@ def main():
     new_head = reverse_linklist(a)
     print_list(new_head)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

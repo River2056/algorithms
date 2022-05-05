@@ -7,5 +7,6 @@ def contains_common_item(arr1, arr2):
             return True
     return False
 
-print(contains_common_item(['a', 'b', 'c', 'x'], ['z', 'y', 'i']))
-print(contains_common_item(['a', 'b', 'c', 'x'], ['z', 'y', 'x']))
+
+print(contains_common_item(["a", "b", "c", "x"], ["z", "y", "i"]))
+print(contains_common_item(["a", "b", "c", "x"], ["z", "y", "x"]))

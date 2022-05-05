@@ -1,16 +1,18 @@
 import unittest
 
+
 def trap_rain_water_brute_force(height):
     # count every units of water for each element
     total_amount = 0
     for index, block in enumerate(height):
         left_max = max(height[0:index]) if len(height[0:index]) > 0 else 0
-        right_max = max(height[index+1:]) if len(height[index+1:]) > 0 else 0
+        right_max = max(height[index + 1 :]) if len(height[index + 1 :]) > 0 else 0
         amount = min(left_max, right_max) - block
         if amount <= 0:
             continue
         total_amount += amount
     return total_amount
+
 
 def trap_rain_water_self(height):
     total_amount = 0
@@ -33,14 +35,15 @@ def trap_rain_water_self(height):
             current = height[pr]
     return total_amount
 
+
 def trap_rain_water(height):
     """
-        1. Identify pointer with lesser value
-        2. Is this pointer value greater than or equal to max on that side
-            yes -> update max on that side
-            no -> get water for pointer value, add to total
-        3. move pointer inwards
-        4. repeat for other pointer
+    1. Identify pointer with lesser value
+    2. Is this pointer value greater than or equal to max on that side
+        yes -> update max on that side
+        no -> get water for pointer value, add to total
+    3. move pointer inwards
+    4. repeat for other pointer
     """
     total_amount = 0
     left, right = 0, len(height) - 1
@@ -60,6 +63,7 @@ def trap_rain_water(height):
             right -= 1
     return total_amount
 
+
 class TestTrapRainWater(unittest.TestCase):
     def setUp(self):
         self.test_input = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
@@ -69,34 +73,35 @@ class TestTrapRainWater(unittest.TestCase):
         self.expected_2 = 9
 
     def test_trap_rain_water_brute_force(self):
-        print('test trap_rain_water_brute_force')
+        print("test trap_rain_water_brute_force")
         result = trap_rain_water_brute_force(self.test_input)
-        print('result: ', result)
+        print("result: ", result)
         self.assertEqual(result, self.expected)
 
         result = trap_rain_water_brute_force(self.test_input_2)
-        print('result: ', result)
+        print("result: ", result)
         self.assertEqual(result, self.expected_2)
 
     def test_trap_rain_water_self(self):
-        print('test trap_rain_water_self')
+        print("test trap_rain_water_self")
         result = trap_rain_water_self(self.test_input)
-        print('result: ', result)
+        print("result: ", result)
         self.assertEqual(result, self.expected)
 
         result = trap_rain_water_self(self.test_input_2)
-        print('result: ', result)
+        print("result: ", result)
         self.assertEqual(result, self.expected_2)
 
     def test_trap_rain_water(self):
-        print('test trap_rain_water')
+        print("test trap_rain_water")
         result = trap_rain_water(self.test_input)
-        print('result: ', result)
+        print("result: ", result)
         self.assertEqual(result, self.expected)
 
         result = trap_rain_water(self.test_input_2)
-        print('result: ', result)
+        print("result: ", result)
         self.assertEqual(result, self.expected_2)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

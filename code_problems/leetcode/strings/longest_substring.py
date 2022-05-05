@@ -1,5 +1,6 @@
 import unittest
 
+
 def longest_substring(s):
     l = 0
     max_count = 0
@@ -13,24 +14,26 @@ def longest_substring(s):
         max_count = max(max_count, len(check_list))
     return max_count
 
+
 class TestLongestSubstring(unittest.TestCase):
     def test_longest_substring(self):
-        print('test longest substring without repeating characters')
-        result = longest_substring('abcabcbb')
-        print('result:', result)
+        print("test longest substring without repeating characters")
+        result = longest_substring("abcabcbb")
+        print("result:", result)
         self.assertEqual(result, 3)
 
-        result = longest_substring('bbbbb')
-        print('result:', result)
+        result = longest_substring("bbbbb")
+        print("result:", result)
         self.assertEqual(result, 1)
 
-        result = longest_substring('pwwkew')
-        print('result:', result)
+        result = longest_substring("pwwkew")
+        print("result:", result)
         self.assertEqual(result, 3)
 
-        result = longest_substring(' ')
-        print('result:', result)
+        result = longest_substring(" ")
+        print("result:", result)
         self.assertEqual(result, 1)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

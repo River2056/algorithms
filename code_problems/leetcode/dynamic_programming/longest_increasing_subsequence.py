@@ -1,10 +1,11 @@
 import unittest
 
+
 def lengthOfLIS_self_implement_with_hints(nums):
     """
-        self implemented solution with hints
-        runtime: 6750ms, 7.95%
-        memory: 14.3MB, 50.41
+    self implemented solution with hints
+    runtime: 6750ms, 7.95%
+    memory: 14.3MB, 50.41
     """
     dp = [0] * len(nums)
     for i in range(len(nums) - 1, -1, -1):
@@ -22,9 +23,10 @@ def lengthOfLIS_self_implement_with_hints(nums):
         dp[i] = max(arr)
     return max(dp)
 
+
 def lengthOfLIS_from_neetcode(nums):
     """
-        solution from neetcode
+    solution from neetcode
     """
     LIS = [1] * len(nums)
     for i in range(len(nums) - 1, -1, -1):
@@ -33,6 +35,7 @@ def lengthOfLIS_from_neetcode(nums):
                 LIS[i] = max(LIS[i], 1 + LIS[j])
     return max(LIS)
 
+
 class TestLongestIncreasingSubsequence(unittest.TestCase):
     def setUp(self):
         self.tests = [
@@ -40,7 +43,7 @@ class TestLongestIncreasingSubsequence(unittest.TestCase):
             ([0, 3, 1, 6, 2, 2, 7], 4),
             ([10, 9, 2, 5, 3, 7, 101, 18], 4),
             ([0, 1, 0, 3, 2, 3], 4),
-            ([7, 7, 7, 7, 7, 7, 7], 1)
+            ([7, 7, 7, 7, 7, 7, 7], 1),
         ]
 
     # def test_lengthOfLIS_self_implement_with_hints(self):
@@ -54,8 +57,9 @@ class TestLongestIncreasingSubsequence(unittest.TestCase):
         for value, expected in self.tests:
             with self.subTest(value=value):
                 result = lengthOfLIS_from_neetcode(value)
-                print(f'result: {result}, expected: {expected}, input: {value}')
+                print(f"result: {result}, expected: {expected}, input: {value}")
                 self.assertEqual(result, expected)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

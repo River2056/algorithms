@@ -4,6 +4,7 @@ def fib_generator():
         a, b = b, a + b
         yield a
 
+
 def main():
     result = fib_generator()
 
@@ -12,5 +13,6 @@ def main():
         if i == 0:
             print(val)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

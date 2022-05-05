@@ -1,7 +1,8 @@
 import json
 
-class Node():
-    def __init__(self, value, left = None, right = None):
+
+class Node:
+    def __init__(self, value, left=None, right=None):
         self.value = value
         self.left = left
         self.right = right
@@ -10,9 +11,10 @@ class Node():
         return str(self.value)
 
     def __repr__(self):
-        return f'Node[value: {self.value}, left: {self.left}, right: {self.right}]'
+        return f"Node[value: {self.value}, left: {self.left}, right: {self.right}]"
 
-class BinarySearchTree():
+
+class BinarySearchTree:
     def __init__(self):
         self.root = None
 
@@ -43,7 +45,7 @@ class BinarySearchTree():
         while True:
             if current != None:
                 if current.value == value:
-                    print('level: ', level)
+                    print("level: ", level)
                     return current
                 else:
                     if current.value > value:
@@ -83,15 +85,17 @@ class BinarySearchTree():
                 root.value = self.successor(root)
                 root.right = self.remove(root.right, root.value)
             else:
-                root.value =  self.predecessor(root)
+                root.value = self.predecessor(root)
                 root.left = self.remove(root.left, root.value)
         return root
 
+
 def traverse(node):
-    tree = { 'value': node.value, 'left': None, 'right': None }
-    tree['left'] = None if node.left == None else traverse(node.left)
-    tree['right'] = None if node.right == None else traverse(node.right)
+    tree = {"value": node.value, "left": None, "right": None}
+    tree["left"] = None if node.left == None else traverse(node.left)
+    tree["right"] = None if node.right == None else traverse(node.right)
     return tree
+
 
 def main():
     bst = BinarySearchTree()
@@ -104,7 +108,7 @@ def main():
     bst.insert(1)
     bst.insert(7)
 
-    print('before remove: ')
+    print("before remove: ")
     print(json.dumps(traverse(bst.root), indent=4))
 
     # lookup_node = bst.lookup(100)
@@ -112,14 +116,14 @@ def main():
 
     # lookup_node = bst.lookup(1)
     # print('lookup node: ', lookup_node)
-    bst.remove(bst.root ,9)
-    print('after remove: ')
+    bst.remove(bst.root, 9)
+    print("after remove: ")
     print(json.dumps(traverse(bst.root), indent=4))
-
 
     bst.remove(bst.root, 20)
-    print('after remove: ')
+    print("after remove: ")
     print(json.dumps(traverse(bst.root), indent=4))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

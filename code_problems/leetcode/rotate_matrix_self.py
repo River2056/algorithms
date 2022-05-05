@@ -7,12 +7,14 @@ def rotate_matrix(m):
             m[i][j] = t
     return m
 
+
 def print_matrix(m):
     for _, arr in enumerate(m):
         for val in arr:
-            print(val, end='\t')
+            print(val, end="\t")
         print()
     print()
+
 
 def main():
     m = [
@@ -21,12 +23,13 @@ def main():
         [9, 10, 11, 12],
         [13, 14, 15, 16],
     ]
-    print('before')
+    print("before")
     print_matrix(m)
 
-    print('after')
+    print("after")
     rotated_matrix = rotate_matrix(m)
     print_matrix(rotated_matrix)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

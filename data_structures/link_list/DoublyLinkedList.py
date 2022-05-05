@@ -1,4 +1,4 @@
-class Node():
+class Node:
     def __init__(self, value, prev, next):
         self.value = value
         self.prev = prev
@@ -8,9 +8,10 @@ class Node():
         return str(self.value)
 
     def __repr__(self):
-        return f'[value: {self.value}, prev: {self.prev}, next: {self.next}]'
+        return f"[value: {self.value}, prev: {self.prev}, next: {self.next}]"
 
-class DoublyLinkedList():
+
+class DoublyLinkedList:
     def __init__(self):
         self.size = 0
         self.head = None
@@ -48,13 +49,13 @@ class DoublyLinkedList():
         previous_node = self.transverse_to_index(index - 1)
         current_node = previous_node.next
 
-        '''
+        """
             example:
                 prev<-->current
                      ||
                      \/
             prev<-->node<-->current
-        '''
+        """
         previous_node.next = node
         current_node.prev = node
         node.prev = previous_node
@@ -68,13 +69,13 @@ class DoublyLinkedList():
         to_delete = previous_node.next
         next_node = to_delete.next
 
-        '''
+        """
             example:
             prev<-->to_delete<-->next
                       ||
                       \/
                  prev<-->next
-        '''
+        """
         previous_node.next = next_node
         next_node.prev = previous_node
         # reset pointers
@@ -85,8 +86,8 @@ class DoublyLinkedList():
 
     def transverse_to_index(self, index):
         """
-            helper method to transverse through list 
-            and return node at given index
+        helper method to transverse through list
+        and return node at given index
         """
         counter = 0
         if index >= self.size - 1:
@@ -95,7 +96,7 @@ class DoublyLinkedList():
             index = 0
         if self.size <= 0:
             return None
-        
+
         current_node = self.head
         while counter != index:
             current_node = current_node.next
@@ -111,6 +112,7 @@ class DoublyLinkedList():
             current = current.next
         print(s)
 
+
 def main():
     my_doubly_linked_list = DoublyLinkedList()
     my_doubly_linked_list.append(100)
@@ -118,14 +120,15 @@ def main():
     my_doubly_linked_list.prepend(500)
     my_doubly_linked_list.prepend(600)
     inserted_node = my_doubly_linked_list.insert(2, 777)
-    print('inserted node: ', inserted_node.__repr__())
+    print("inserted node: ", inserted_node.__repr__())
     my_doubly_linked_list.print()
     print(my_doubly_linked_list.size)
 
     removed_node = my_doubly_linked_list.remove(2)
-    print('removed node: ', removed_node.__repr__())
+    print("removed node: ", removed_node.__repr__())
     my_doubly_linked_list.print()
     print(my_doubly_linked_list.size)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

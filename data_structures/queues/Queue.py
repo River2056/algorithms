@@ -1,4 +1,4 @@
-class Node():
+class Node:
     def __init__(self, value, next):
         self.value = value
         self.next = next
@@ -7,17 +7,17 @@ class Node():
         return str(self.value)
 
     def __repr__(self):
-        return f'[{self.value}, {self.next}]'
+        return f"[{self.value}, {self.next}]"
 
 
-class Queue():
+class Queue:
     def __init__(self):
         self.first = None
         self.last = None
         self.length = 0
 
     def peek(self):
-        print('peek first item: ', self.first)
+        print("peek first item: ", self.first)
         return self.first
 
     def enqueue(self, value):
@@ -52,29 +52,30 @@ class Queue():
         while first != None:
             s.append(first.value)
             first = first.next
-        print('queue items: ', s)
+        print("queue items: ", s)
 
 
 def main():
     my_queue = Queue()
-    my_queue.enqueue('Joy')
-    my_queue.enqueue('Matt')
-    my_queue.enqueue('Pavel')
-    my_queue.enqueue('Samir')
-    my_queue.enqueue('Kevin')
+    my_queue.enqueue("Joy")
+    my_queue.enqueue("Matt")
+    my_queue.enqueue("Pavel")
+    my_queue.enqueue("Samir")
+    my_queue.enqueue("Kevin")
     my_queue.print()
 
     removed_item = my_queue.dequeue()
-    print(f'removed item: {removed_item}')
+    print(f"removed item: {removed_item}")
     my_queue.print()
 
     removed_item = my_queue.dequeue()
-    print(f'removed item: {removed_item}')
+    print(f"removed item: {removed_item}")
     my_queue.print()
 
     peek_item = my_queue.peek()
-    print('peek item: ', peek_item)
+    print("peek item: ", peek_item)
     my_queue.print()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

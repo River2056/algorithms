@@ -1,5 +1,5 @@
-class Node():
-    def __init__(self, value, left = None, right = None):
+class Node:
+    def __init__(self, value, left=None, right=None):
         self.value = value
         self.left = left
         self.right = right
@@ -8,9 +8,10 @@ class Node():
         return str(self.value)
 
     def __repr__(self):
-        return f'Node[value: {self.value}, left: {self.left}, right: {self.right}]'
+        return f"Node[value: {self.value}, left: {self.left}, right: {self.right}]"
 
-class BinarySearchTree():
+
+class BinarySearchTree:
     def __init__(self):
         self.root = None
 
@@ -41,7 +42,7 @@ class BinarySearchTree():
         while True:
             if not current:
                 if current.value == value:
-                    print('level: ', level)
+                    print("level: ", level)
                     return current
                 else:
                     if current.value > value:
@@ -84,11 +85,13 @@ class BinarySearchTree():
             current = current.right
         return current
 
+
 def traverse(node):
-    tree = { 'value': node.value, 'left': None, 'right': None }
-    tree['left'] = None if node.left == None else traverse(node.left)
-    tree['right'] = None if node.right == None else traverse(node.right)
+    tree = {"value": node.value, "left": None, "right": None}
+    tree["left"] = None if node.left == None else traverse(node.left)
+    tree["right"] = None if node.right == None else traverse(node.right)
     return tree
+
 
 def main():
     bst = BinarySearchTree()
@@ -101,5 +104,6 @@ def main():
     bst.insert(1)
     bst.insert(7)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

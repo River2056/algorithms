@@ -1,4 +1,4 @@
-def find_factorial_recursive(number, ref = {}):
+def find_factorial_recursive(number, ref={}):
     if number in ref:
         return ref[number]
     if number <= 1:
@@ -18,7 +18,7 @@ def find_factorial_iterative(number):
 
 
 def main():
-    print('recursive function')
+    print("recursive function")
     print(find_factorial_recursive(3))
     print(find_factorial_recursive(5))
     print(find_factorial_recursive(10))
@@ -27,7 +27,7 @@ def main():
     print(find_factorial_recursive(100))
     print()
 
-    print('iterative function')
+    print("iterative function")
     print(find_factorial_iterative(3))
     print(find_factorial_iterative(5))
     print(find_factorial_iterative(10))
@@ -37,5 +37,5 @@ def main():
     print()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

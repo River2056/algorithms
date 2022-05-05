@@ -1,6 +1,6 @@
 def merge_sorted_array(arr1, arr2):
     if not isinstance(arr1, list) or not isinstance(arr2, list):
-        raise Exception('Please pass in list type parameters!')
+        raise Exception("Please pass in list type parameters!")
     if len(arr1) == 0:
         return arr2
     if len(arr2) == 0:
@@ -23,8 +23,9 @@ def merge_sorted_array(arr1, arr2):
         j += 1
     return result
 
+
 print(merge_sorted_array([0, 15, 22, 31], [1, 3, 11, 47]))
 print(merge_sorted_array([20, 23, 75, 88], [90, 99]))
 print(merge_sorted_array([], [20, 30, 40]))
 print(merge_sorted_array([1], [20, 30, 40]))
-print(merge_sorted_array('hello', 'world')) # invalid
+print(merge_sorted_array("hello", "world"))  # invalid

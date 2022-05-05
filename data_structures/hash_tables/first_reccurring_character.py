@@ -9,9 +9,11 @@
     Given an array = [2, 3, 4, 5]
     It should return undefined
 """
+
+
 def first_recurring_character(nums):
     if type(nums) is not list:
-        raise Exception('arguments must be list!')
+        raise Exception("arguments must be list!")
     if len(nums) == 0:
         return None
     ref = {}
@@ -21,8 +23,9 @@ def first_recurring_character(nums):
         ref[n] = i
     return None
 
+
 print(first_recurring_character([2, 5, 1, 2, 3, 5, 1, 2, 4]))
 print(first_recurring_character([2, 1, 1, 2, 3, 5, 1, 2, 4]))
 print(first_recurring_character([2, 3, 4, 5]))
 print(first_recurring_character([]))
-print(first_recurring_character('hello')) # invalid
+print(first_recurring_character("hello"))  # invalid

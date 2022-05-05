@@ -1,5 +1,6 @@
 def closure_fib():
     cache = {}
+
     def fib(n):
         if n < 2:
             return n
@@ -8,7 +9,9 @@ def closure_fib():
         value = fib(n - 1) + fib(n - 2)
         cache[n] = value
         return value
+
     return fib
+
 
 def main():
     memo_fib = closure_fib()
@@ -18,5 +21,6 @@ def main():
     print(memo_fib(7))
     print(memo_fib(20))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

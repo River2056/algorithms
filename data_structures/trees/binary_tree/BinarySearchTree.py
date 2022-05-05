@@ -1,5 +1,5 @@
-class Node():
-    def __init__(self, value, left = None, right = None):
+class Node:
+    def __init__(self, value, left=None, right=None):
         self.value = value
         self.left = left
         self.right = right
@@ -8,9 +8,10 @@ class Node():
         return str(self.value)
 
     def __repr__(self):
-        return f'Node[value: {self.value}, left: {self.left}, right: {self.right}]'
+        return f"Node[value: {self.value}, left: {self.left}, right: {self.right}]"
 
-class Stack():
+
+class Stack:
     def __init__(self):
         self.data = []
 
@@ -32,7 +33,8 @@ class Stack():
     def print(self):
         print(self.data)
 
-class BinarySearchTree():
+
+class BinarySearchTree:
     def __init__(self):
         self.root = None
 
@@ -74,7 +76,7 @@ class BinarySearchTree():
             current = stack.pop()
             if current != None:
                 if current.value == target:
-                    print(f'node found at level: {level}')
+                    print(f"node found at level: {level}")
                     return current
                 elif current.value > target:
                     level += 1
@@ -82,14 +84,14 @@ class BinarySearchTree():
                 elif current.value < target:
                     level += 1
                     stack.push(current.right)
-        print('done finding')
+        print("done finding")
 
     def remove(self, target):
         stack = Stack()
         stack.push(self.root)
-        
+
         previous = self.root
-        direction = ''
+        direction = ""
         while not stack.is_empty():
             current = stack.pop()
             if current != None:
@@ -97,9 +99,13 @@ class BinarySearchTree():
                 if current.value == target:
                     # node to remove, move children up one level
                     if direction == 0:
-                        previous.left = current.right if current.right != None else current.left
+                        previous.left = (
+                            current.right if current.right != None else current.left
+                        )
                     elif direction == 1:
-                        previous.right = current.right if current.right != None else current.left
+                        previous.right = (
+                            current.right if current.right != None else current.left
+                        )
                     # return pop_item
                 else:
                     if current.value > target:
@@ -109,7 +115,7 @@ class BinarySearchTree():
                         stack.push(current.right)
                         direction = 1
                     previous = current
-        print('done removing')
+        print("done removing")
 
     def print(self):
         stack = Stack()
@@ -125,6 +131,7 @@ class BinarySearchTree():
                 stack.push(current.right)
         print(result)
 
+
 def main():
     bst = BinarySearchTree()
     bst.insert(9)
@@ -137,11 +144,12 @@ def main():
     bst.print()
 
     node = bst.lookup(2)
-    print('lookup node: ', node)
+    print("lookup node: ", node)
 
     pop_item = bst.remove(5)
-    print('pop item: ', pop_item)
+    print("pop item: ", pop_item)
     bst.print()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

@@ -1,5 +1,6 @@
 import unittest
 
+
 def length_of_longest_substring_brute(s):
     ref = set()
     count = 0
@@ -11,6 +12,7 @@ def length_of_longest_substring_brute(s):
             ref.add(word)
         count = max(count, len(ref))
     return count
+
 
 def lengthOfLongestSubstring(s):
     if len(s) <= 1:
@@ -27,16 +29,17 @@ def lengthOfLongestSubstring(s):
         j += 1
     return max_count
 
+
 class TestLongestSubstringWithoutRepeatingCharacters(unittest.TestCase):
     def setUp(self):
         self.tests = [
-            ('abcabcbb', 3),
-            ('bbbbb', 1),
-            ('pwwkew', 3),
-            (' ', 1),
-            ('au', 2),
-            ('qrsvbspk', 5),
-            ('aab', 2)
+            ("abcabcbb", 3),
+            ("bbbbb", 1),
+            ("pwwkew", 3),
+            (" ", 1),
+            ("au", 2),
+            ("qrsvbspk", 5),
+            ("aab", 2),
         ]
 
     # def test_lengthOfLongestSubstring(self):
@@ -50,9 +53,9 @@ class TestLongestSubstringWithoutRepeatingCharacters(unittest.TestCase):
         for value, expected in self.tests:
             with self.subTest(value=value):
                 result = length_of_longest_substring_brute(value)
-                print(f'result: {result}, expected: {expected}, input: {value}')
+                print(f"result: {result}, expected: {expected}, input: {value}")
                 self.assertEqual(result, expected)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

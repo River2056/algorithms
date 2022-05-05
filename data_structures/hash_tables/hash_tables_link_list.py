@@ -1,13 +1,14 @@
-class LinkNode():
+class LinkNode:
     def __init__(self, key, value, next):
         self.key = key
         self.value = value
         self.next = next
 
     def __repr__(self):
-        return f'LinkNode[key: {self.key}, value: {self.value}, next: {self.next}]'
+        return f"LinkNode[key: {self.key}, value: {self.value}, next: {self.next}]"
 
-class HashTable():
+
+class HashTable:
     def __init__(self, size):
         self.data = [None] * size
 
@@ -66,10 +67,11 @@ class HashTable():
                         all_values.append(node.value)
         return all_values
 
+
 my_hash_table = HashTable(50)
-my_hash_table.set('grapes', 10000)
-my_hash_table.set('master', 'hello')
-print(my_hash_table.get('grapes'))
-print(my_hash_table.get('master'))
+my_hash_table.set("grapes", 10000)
+my_hash_table.set("master", "hello")
+print(my_hash_table.get("grapes"))
+print(my_hash_table.get("master"))
 print(my_hash_table.keys())
 print(my_hash_table.values())

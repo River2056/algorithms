@@ -1,4 +1,4 @@
-class Queue():
+class Queue:
     def __init__(self):
         self.first = []
         self.last = []
@@ -24,10 +24,10 @@ class Queue():
 
 def main():
     queue = Queue()
-    queue.push(1);
+    queue.push(1)
     print(queue.pop())
-    print('check if empty: ', queue.is_empty())
+    print("check if empty: ", queue.is_empty())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

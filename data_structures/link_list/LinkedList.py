@@ -1,4 +1,4 @@
-class Node():
+class Node:
     def __init__(self, value, next):
         self.value = value
         self.next = next
@@ -7,9 +7,10 @@ class Node():
         return str(self.value)
 
     def __repr__(self):
-        return f'[{self.value}, {self.next}]'
+        return f"[{self.value}, {self.next}]"
 
-class LinkedList():
+
+class LinkedList:
     def __init__(self):
         self.size = 0
         self.head = None
@@ -54,12 +55,12 @@ class LinkedList():
         else:
             previous_node = self.head
             current_node = self.head
-            '''
+            """
                    prev-->current
                         ||
                         \/
                 prev-->node-->current
-            '''
+            """
             while init_index != index:
                 previous_node = current_node
                 current_node = current_node.next
@@ -79,12 +80,12 @@ class LinkedList():
             original_head = self.head
             self.head = self.head.next
             return original_head
-        '''
+        """
             prev-->to_delete-->current
                       ||
                       \/
                  prev-->current
-        '''
+        """
         init_index = 0
         previous_node = self.head
         current_node = self.head
@@ -107,14 +108,14 @@ class LinkedList():
         if self.size <= 0:
             # nothing to reverse
             return
-        '''
+        """
           head     tail
             A-->B-->C-->null
                    ||
                    \/
                   tail    head
             null<--A<--B<--C
-        '''
+        """
         previous_node = None
         current_node = self.head
         self.tail = self.head
@@ -134,16 +135,18 @@ class LinkedList():
             current = current.next
         print(s)
 
+
 # def print_link_list(llist):
 #     if llist == None:
 #         return
 #     print(llist)
 #     print_link_list(llist.next)
-    # current = llist.head
-    # while current != None:
-    #     print(current)
-    #     current = current.next
-    # return
+# current = llist.head
+# while current != None:
+#     print(current)
+#     current = current.next
+# return
+
 
 def main():
     my_link_list = LinkedList()
@@ -157,17 +160,18 @@ def main():
     print(my_link_list.size)
 
     removed_node = my_link_list.remove(2)
-    print(f'removed node: {removed_node.__repr__()}')
+    print(f"removed node: {removed_node.__repr__()}")
     my_link_list.print()
     print(my_link_list.size)
 
     removed_node = my_link_list.remove(99)
-    print(f'removed node: {removed_node.__repr__()}')
+    print(f"removed node: {removed_node.__repr__()}")
     my_link_list.print()
     print(my_link_list.size)
 
     my_link_list.reverse()
     my_link_list.print()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
