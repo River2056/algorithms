@@ -30,6 +30,17 @@ def lengthOfLongestSubstring(s):
     return max_count
 
 
+def length_of_longest_substring_optimal(s):
+    longest = 0
+    left = 0
+    ref = {}
+    for idx, letter in enumerate(s):
+        if letter in ref:
+            left = idx if idx > left else left
+        ref[letter] = idx
+        longest = max(longest, (idx - left) + 1)
+    return longest
+
 class TestLongestSubstringWithoutRepeatingCharacters(unittest.TestCase):
     def setUp(self):
         self.tests = [
@@ -49,10 +60,17 @@ class TestLongestSubstringWithoutRepeatingCharacters(unittest.TestCase):
     #             print(f'result: {result}, expected: {expected}, input: {value}')
     #             self.assertEqual(result, expected)
 
-    def test_length_of_longest_substring_brute(self):
+    # def test_length_of_longest_substring_brute(self):
+    #     for value, expected in self.tests:
+    #         with self.subTest(value=value):
+    #             result = length_of_longest_substring_brute(value)
+    #             print(f"result: {result}, expected: {expected}, input: {value}")
+    #             self.assertEqual(result, expected)
+
+    def test_length_of_longest_substring_optimal(self):
         for value, expected in self.tests:
             with self.subTest(value=value):
-                result = length_of_longest_substring_brute(value)
+                result = length_of_longest_substring_optimal(value)
                 print(f"result: {result}, expected: {expected}, input: {value}")
                 self.assertEqual(result, expected)
 

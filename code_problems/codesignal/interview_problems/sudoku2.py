@@ -11,9 +11,15 @@ def sudoku2(grid):
                 return False
 
     # check for column duplicates
-    for idx, _ in enumerate(grid):
+    for idx, row in enumerate(grid):
         # column
-        pass
+        col = [grid[i][idx] for i, v in enumerate(row)]
+        found =  list(filter(lambda x: x != ".", col))
+        if len(found) > 0:
+            s = set(found)
+            if len(s) != len(found):
+                return False
+    return True
 
 
 class TestSudoku2(unittest.TestCase):
