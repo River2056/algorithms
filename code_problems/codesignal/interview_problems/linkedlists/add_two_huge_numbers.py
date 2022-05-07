@@ -1,6 +1,12 @@
 import unittest
 
 
+class ListNode(object):
+    def __init__(self, x):
+        self.value = x
+        self.next = None
+
+
 def add_two_huge_numbers(a, b):
     pass
 
