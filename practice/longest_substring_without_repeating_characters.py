@@ -31,15 +31,19 @@ def lengthOfLongestSubstring(s):
 
 
 def length_of_longest_substring_optimal(s):
+    if len(s) <= 1:
+        return len(s)
     longest = 0
     left = 0
     ref = {}
     for idx, letter in enumerate(s):
         if letter in ref:
-            left = idx if idx > left else left
+            original = ref[letter]
+            left = original + 1 if original >= left else left
         ref[letter] = idx
         longest = max(longest, (idx - left) + 1)
     return longest
+
 
 class TestLongestSubstringWithoutRepeatingCharacters(unittest.TestCase):
     def setUp(self):
@@ -51,6 +55,8 @@ class TestLongestSubstringWithoutRepeatingCharacters(unittest.TestCase):
             ("au", 2),
             ("qrsvbspk", 5),
             ("aab", 2),
+            ("dvdf", 3),
+            ("abba", 2),
         ]
 
     # def test_lengthOfLongestSubstring(self):
