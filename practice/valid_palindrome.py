@@ -29,6 +29,17 @@ def valid_palindrome_pointer_outwards(s: str):
     return True
 
 
+def valid_palindrome_reverse(s: str):
+    s = re.sub(r"[^A-Za-z0-9]", "", s).lower()
+    if len(s) <= 1:
+        return True
+    reverse_s = s[::-1]
+    for i, v in enumerate(s):
+        if reverse_s[i] != v:
+            return False
+    return True
+
+
 class TestValidPalidrome(unittest.TestCase):
     def setUp(self):
         self.tests = [
@@ -46,10 +57,17 @@ class TestValidPalidrome(unittest.TestCase):
     #             print(f"result: {result}, expected: {expected}, input: {value}")
     #             self.assertEqual(result, expected)
 
-    def test_valid_palindrome_pointer_outwards(self):
+    # def test_valid_palindrome_pointer_outwards(self):
+    #     for value, expected in self.tests:
+    #         with self.subTest(value=value):
+    #             result = valid_palindrome_pointer_outwards(value)
+    #             print(f"result: {result}, expected: {expected}, input: {value}")
+    #             self.assertEqual(result, expected)
+
+    def test_valid_palindrome_reverse(self):
         for value, expected in self.tests:
             with self.subTest(value=value):
-                result = valid_palindrome_pointer_outwards(value)
+                result = valid_palindrome_reverse(value)
                 print(f"result: {result}, expected: {expected}, input: {value}")
                 self.assertEqual(result, expected)
 
