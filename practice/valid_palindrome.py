@@ -3,6 +3,9 @@ import re
 
 
 def valid_palindrome_pointer_inwards(s: str):
+    """
+    initialize two pointers from both ends and going inwards
+    """
     s = re.sub(r"[^A-Za-z0-9]", "", s).lower()
     left, right = 0, len(s) - 1
     while left < right:
@@ -14,6 +17,9 @@ def valid_palindrome_pointer_inwards(s: str):
 
 
 def valid_palindrome_pointer_outwards(s: str):
+    """
+    initialize two pointers in the middle and going outwards
+    """
     s = re.sub(r"[^A-Za-z0-9]", "", s).lower()
     if len(s) <= 1:
         return True
@@ -30,6 +36,9 @@ def valid_palindrome_pointer_outwards(s: str):
 
 
 def valid_palindrome_reverse(s: str):
+    """
+    reverse the original string and compare
+    """
     s = re.sub(r"[^A-Za-z0-9]", "", s).lower()
     if len(s) <= 1:
         return True
