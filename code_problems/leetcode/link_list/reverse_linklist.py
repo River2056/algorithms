@@ -30,10 +30,10 @@ def main():
     c = ListNode(val=3)
     d = ListNode(val=4)
     e = ListNode(val=5)
-    a.next = b
-    b.next = c
-    c.next = d
-    d.next = e
+    a.next = b  # type: ignore
+    b.next = c  # type: ignore
+    c.next = d  # type: ignore
+    d.next = e  # type: ignore
 
     print_list(a)
     new_head = reverse_linklist(a)
