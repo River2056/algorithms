@@ -12,3 +12,4 @@ def maxSubArray(nums):
 
 
 print(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+print(maxSubArray([-2, 10, 7, -5, 15, 6]))
