@@ -4,23 +4,77 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    def __str__(self):
+        return f"[val:{self.val}, left:{self.left}, right:{self.right}]"
 
-def find_leaves_of_binary_tree(root: TreeNode) -> list[list[int]]:
-    pass
+
+def find_leaves_of_binary_tree(root: TreeNode):
+    res = []
+    queue = []
+    curr = root
+    if curr and (curr.left or curr.right):
+        if curr.left:
+            queue.append(curr.left)
+        if curr.right:
+            queue.append(curr.right)
+    while len(queue) > 0:
+        curr = queue.pop(0)
+    
+    return res
 
 
-def test_case(lst: list[int]):
+def test_case(lst):
     if len(lst) <= 1:
         return [[]] if len(lst) < 1 else [[lst[0]]]
-    root = TreeNode(lst[0])
+    root = construct_tree(lst)
+    print_tree(root)
     res = find_leaves_of_binary_tree(root)
     print(res)
 
 
-def construct_tree(lst, head):
+def construct_tree(lst):
     queue = []
+    root = None
+    curr = None
+
     while len(lst) > 0:
-        queue.append(lst.pop(0))
+        elem = lst.pop(0)
+        node = TreeNode(elem)
+        if not root:
+            root = node
+        if not curr:
+            curr = node
+        elif not curr.left:
+            curr.left = node
+        elif not curr.right:
+            curr.right = node
+
+        if curr and curr.left and curr.right:
+            queue.append(curr.left)
+            queue.append(curr.right)
+
+        if curr.left and curr.right:
+            tmp = queue.pop(0)
+            curr = tmp
+
+    return root
+
+
+def print_tree(root):
+    print(root)
+    res = []
+    queue = []
+    curr = root
+    queue.append(root)
+    while len(queue) > 0:
+        node = queue.pop(0)
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+        res.append(node.val)
+
+    print(res)
 
 
 def main():
