@@ -9,18 +9,26 @@ class TreeNode:
 
 
 def find_leaves_of_binary_tree(root: TreeNode):
-    res = []
-    queue = []
-    curr = root
-    if curr and (curr.left or curr.right):
-        if curr.left:
-            queue.append(curr.left)
-        if curr.right:
-            queue.append(curr.right)
-    while len(queue) > 0:
-        curr = queue.pop(0)
+    ref = {}
+    def dfs(node, layer):
+        if not node:
+            return layer
+        
+        left = dfs(node.left, layer)
+        right = dfs(node.right, layer)
+
+        layer = max(left, right)
+
+        if not layer in ref:
+            ref[layer] = [node.val]
+        else:
+            ref[layer].append(node.val)
+
+        return layer + 1
+
+    dfs(root, 0)
     
-    return res
+    return ref.values()
 
 
 def test_case(lst):
