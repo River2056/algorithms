@@ -10,10 +10,11 @@ class TreeNode:
 
 def find_leaves_of_binary_tree(root: TreeNode):
     ref = {}
+
     def dfs(node, layer):
         if not node:
             return layer
-        
+
         left = dfs(node.left, layer)
         right = dfs(node.right, layer)
 
@@ -27,7 +28,7 @@ def find_leaves_of_binary_tree(root: TreeNode):
         return layer + 1
 
     dfs(root, 0)
-    
+
     return ref.values()
 
 
@@ -36,7 +37,7 @@ def test_case(lst):
         return [[]] if len(lst) < 1 else [[lst[0]]]
     root = construct_tree(lst)
     print_tree(root)
-    res = find_leaves_of_binary_tree(root)
+    res = find_leaves_of_binary_tree(root)  # type: ignore
     print(res)
 
 
